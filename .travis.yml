@@ -9,17 +9,17 @@ script:
   - docker run react-test npm test -- --coverage
 
 after_success:
-  - docker_build -t multi-client ./client
-  - docker_build -t multi-nginx ./nginx
-  - docker_build -t multi-server ./server
-  - docker_build -t multi-worker ./worker
+  - docker_build -t valdivieso01/multi-client ./client
+  - docker_build -t valdivieso01/multi-nginx ./nginx
+  - docker_build -t valdivieso01/multi-server ./server
+  - docker_build -t valdivieso01/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push multi-client
-  - docker push multi-nginx
-  - docker push multi-server
-  - docker push multi-worker
+  - docker push valdivieso01/multi-client
+  - docker push valdivieso01/multi-nginx
+  - docker push valdivieso01/multi-server
+  - docker push valdivieso01/multi-worker
 
 deploy:
   provider: elasticbeanstalk
