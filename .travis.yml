@@ -9,10 +9,10 @@ script:
   - docker run valdivieso01/react-test npm test -- --coverage
 
 after_success:
-  - docker_build -t valdivieso01/multi-client ./client
-  - docker_build -t valdivieso01/multi-nginx ./nginx
-  - docker_build -t valdivieso01/multi-server ./server
-  - docker_build -t valdivieso01/multi-worker ./worker
+  - docker build -t valdivieso01/multi-client ./client
+  - docker build -t valdivieso01/multi-nginx ./nginx
+  - docker build -t valdivieso01/multi-server ./server
+  - docker build -t valdivieso01/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
